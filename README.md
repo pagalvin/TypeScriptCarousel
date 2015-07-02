@@ -29,7 +29,7 @@ This creates the module and injects *ui.bootstrap* as a dependency.
 
 # index.html (the important bits)
 
-The boostrap carousel magic hides in <carousel> directive.
+The boostrap carousel magic hides in the *carousel* directive.
 
     <body data-ng-app="app" data-ng-controller="Controllers.LandingPageController as vm">
         ...
@@ -71,9 +71,11 @@ It looks pretty similar on the UI Bootstrap page:
 
 A couple of interfaces give us some strong typing. 
 
-LandingPageController initializes the array of ICatSlide's with links out to the most awesome site int he world, http://placekitten.com.
+LandingPageController's constructor initializes the array of ICatSlide's with links out to the most awesome site in the world, http://placekitten.com.
 
 An addSlide() method lets us add more cats via the UI.
+
+Lastly, we add this to the module's bucket 'o controllers.
 
     interface ICatSlide {
         image: string; // The URL of the cat picture.
