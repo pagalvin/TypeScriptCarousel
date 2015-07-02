@@ -27,39 +27,21 @@ There are really just three pieces:
 
 # index.html (the important bits)
 
-<body data-ng-app="app" data-ng-controller="Controllers.LandingPageController as vm">
+    <body data-ng-app="app" data-ng-controller="Controllers.LandingPageController as vm">
+        ...
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div style="height: 305px">
-                        <carousel interval="vm.myInterval">
-                            <slide ng-repeat="slide in vm.slides" active="slide.active">
-                                <img ng-src="{{slide.image}}" style="margin:auto;">
-                                <div class="carousel-caption">
-                                    <h4>Slide {{$index}}</h4>
-                                    <p>{{slide.text}}</p>
-                                </div>
-                            </slide>
-                        </carousel>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-info" ng-click="vm.addSlide()">Add Another Cat to the Rotation</button>
-                        </div>
-                    </div>
-
+        <carousel interval="vm.myInterval">
+            <slide ng-repeat="slide in vm.slides" active="slide.active">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div class="carousel-caption">
+                    <h4>Slide {{$index}}</h4>
+                    <p>{{slide.text}}</p>
                 </div>
-            </div>
-        </div>
+            </slide>
+        </carousel>
 
-
-        <!-- Vendor Scripts -->
-        <script src="../../Scripts/jquery-2.1.1.min.js"></script>
-        <script src="../../Scripts/angular.min.js"></script>
-        <script src="../../Scripts/bootstrap.min.js"></script>
-        <script src="../../scripts/ui-bootstrap-tpls-0.10.0.js"></script>
-
+        ...
+        
         <!-- Bootstrapping -->
         <script src="app/app.js"></script>
         <script src="app/LandingPage/LandingPageController.js"></script>
