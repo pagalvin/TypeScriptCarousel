@@ -14,6 +14,8 @@ There are really just three pieces:
 
 # App.ts
 
+This creates the module and injects *ui.bootstrap* as a dependency.
+
     ((): void => {
     
         'use strict';
@@ -26,6 +28,8 @@ There are really just three pieces:
     })();
 
 # index.html (the important bits)
+
+The boostrap carousel magic hides in <carousel> directive.
 
     <body data-ng-app="app" data-ng-controller="Controllers.LandingPageController as vm">
         ...
@@ -51,21 +55,25 @@ There are really just three pieces:
     
 Compare the above to the sample (as of 07/02/15):
 
-    <div ng-controller="CarouselDemoCtrl">
-      <div style="height: 305px">
-        <carousel interval="myInterval">
-          <slide ng-repeat="slide in slides" active="slide.active">
-            <img ng-src="{{slide.image}}" style="margin:auto;">
-            <div class="carousel-caption">
-              <h4>Slide {{$index}}</h4>
-              <p>{{slide.text}}</p>
-            </div>
-          </slide>
-        </carousel>
-      </div>
-    </div>
+It looks pretty similar on the UI Bootstrap page:
+
+    <carousel interval="myInterval">
+      <slide ng-repeat="slide in slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
+          <h4>Slide {{$index}}</h4>
+          <p>{{slide.text}}</p>
+        </div>
+      </slide>
+    </carousel>
 
 # LandingPageController.ts
+
+A couple of interfaces give us some strong typing. 
+
+LandingPageController initializes the array of ICatSlide's with links out to the most awesome site int he world, http://placekitten.com.
+
+An addSlide() method lets us add more cats via the UI.
 
     interface ICatSlide {
         image: string; // The URL of the cat picture.
