@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none !important;
+        }
+    </style>
+    <title data-ng-bind="title">Bootstrap Carousel in TypeScript (based off John Pappa's Hot Towel for Angular)</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+    <script>
+        // Must be first. IE10 mobile viewport fix
+        if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            var mq = "@-ms-viewport{width:auto!important}";
+            msViewportStyle.appendChild(document.createTextNode(mq));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+
+    <link href="content/ie10mobile.css" rel="stylesheet" />
+    <link href="content/bootstrap.min.css" rel="stylesheet" />
+    <link href="content/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body data-ng-app="app" data-ng-controller="Controllers.LandingPageController as vm">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div style="height: 305px">
+                    <carousel interval="vm.myInterval">
+                        <slide ng-repeat="slide in vm.slides" active="slide.active">
+                            <img ng-src="{{slide.image}}" style="margin:auto;">
+                            <div class="carousel-caption">
+                                <h4>Slide {{$index}}</h4>
+                                <p>{{slide.text}}</p>
+                            </div>
+                        </slide>
+                    </carousel>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-info" ng-click="vm.addSlide()">Add Another Cat to the Rotation</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Vendor Scripts -->
+    <script src="../../Scripts/jquery-2.1.1.min.js"></script>
+    <script src="../../Scripts/angular.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../scripts/ui-bootstrap-tpls-0.10.0.js"></script>
+
+    <!-- Bootstrapping -->
+    <script src="app/app.js"></script>
+    <script src="app/LandingPage/LandingPageController.js"></script>
+
+</body>
+</html>
+
