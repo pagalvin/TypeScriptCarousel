@@ -28,7 +28,6 @@ There are really just three pieces:
 # index.html (the important bits)
 
 <body data-ng-app="app" data-ng-controller="Controllers.LandingPageController as vm">
-
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -48,62 +47,63 @@ There are really just three pieces:
                         <button type="button" class="btn btn-info" ng-click="vm.addSlide()">Add Another Cat to the Rotation</button>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
     
 # LandingPageController.ts
 
-interface ICatSlide {
-    image: string; // The URL of the cat picture.
-    text: string;
-}
+    interface ICatSlide {
+        image: string; // The URL of the cat picture.
+        text: string;
+    }
 
-interface ICatPage {
-    myInterval: number;
-    slides: ICatSlide[];
-}
-
-module Controllers.LandingPageController {
-
-    class LandingPageController implements ICatPage {
-        
+    interface ICatPage {
         myInterval: number;
-        slides: ICatSlide[]; 
+        slides: ICatSlide[];
+    }
+
+    module Controllers.LandingPageController {
+
+        class LandingPageController implements ICatPage {
+        
+            myInterval: number;
+            slides: ICatSlide[]; 
          
-        constructor() {
+            constructor() {
 
-            this.myInterval = 2000;
-            this.slides = [];
+                this.myInterval = 2000;
+                this.slides = [];
 
-            for (var i = 0; i < 4; i++) {
-                this.addSlide();
-            }
+                for (var i = 0; i < 4; i++) {
+                    this.addSlide();
+                }
 
-        } // constructor
+            } // constructor
 
-        addSlide() : void  {
-            var newWidth: number = 600 + this.slides.length + 1;
+            addSlide() : void  {
+                var newWidth: number = 600 + this.slides.length + 1;
 
-            var aCat: ICatSlide = <ICatSlide>{};
+                var aCat: ICatSlide = <ICatSlide>{};
 
-            aCat.image = 'http://placekitten.com/' + newWidth + '/300';
-            aCat.text =
-                ['More', 'Extra', 'Lots of', 'Surplus'][this.slides.length % 4] + ' ' +
-                ['Cats', 'Kittys', 'Felines', 'Cutes'][this.slides.length % 4];
+                aCat.image = 'http://placekitten.com/' + newWidth + '/300';
+                aCat.text =
+                    ['More', 'Extra', 'Lots of', 'Surplus'][this.slides.length % 4] + ' ' +
+                    ['Cats', 'Kittys', 'Felines', 'Cutes'][this.slides.length % 4];
 
-            this.slides.push(aCat);
+                this.slides.push(aCat);
 
-        } // adSlide()
+            } // adSlide()
 
-    } // class
+        } // class
 
-    angular
-        .module('app')
-        .controller('Controllers.LandingPageController', LandingPageController);
+        angular
+            .module('app')
+            .controller('Controllers.LandingPageController', LandingPageController);
 
-}
+    }
+
+
 
 
 
